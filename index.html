@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dieta Ellas - Definición & Glúteos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff1f2;
+            --card-bg: #ffffff;
+            --text-primary: #881337;
+            --accent-pink: #f43f5e;
+            --accent-soft: #fb7185;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #4c0519;
+                --card-bg: #831843;
+                --text-primary: #ffe4e6;
+                --accent-pink: #fb7185;
+                --accent-soft: #fda4af;
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .meal-card {
+            background-color: var(--card-bg);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(244, 63, 94, 0.1);
+        }
+
+        .time-badge {
+            background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+        }
+
+        .kcal-tag {
+            background-color: rgba(244, 63, 94, 0.1);
+            color: var(--accent-pink);
+        }
+
+        .header-gradient {
+            background: linear-gradient(to bottom, #fecdd3, transparent);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .header-gradient {
+                background: linear-gradient(to bottom, #881337, transparent);
+            }
+        }
+    </style>
+</head>
+<body class="pb-12">
+
+    <!-- Header & Info Objetivo -->
+    <header class="p-8 text-center header-gradient">
+        <div class="mb-2 flex justify-center">
+            <span class="bg-rose-500 text-white text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-widest">Objetivo: Recomposición</span>
+        </div>
+        <h1 class="text-4xl font-extrabold mb-1 tracking-tight">Dieta Ellas 📊</h1>
+        <p class="text-sm opacity-80 font-medium">70 kg | 1.65 m | Definición + Glúteos</p>
+        
+        <div class="grid grid-cols-2 gap-3 mt-6">
+            <div class="bg-white/50 dark:bg-rose-900/30 p-3 rounded-2xl backdrop-blur-sm">
+                <p class="text-[10px] uppercase font-bold opacity-60">Energía</p>
+                <p class="text-lg font-black">~2000 kcal</p>
+            </div>
+            <div class="bg-white/50 dark:bg-rose-900/30 p-3 rounded-2xl backdrop-blur-sm">
+                <p class="text-[10px] uppercase font-bold opacity-60">Prioridad</p>
+                <p class="text-lg font-black">Proteína 🍗</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-5 space-y-5">
+
+        <!-- DESAYUNO -->
+        <section class="meal-card p-5">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200 dark:shadow-none">
+                    05:00
+                </span>
+                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Desayuno</span>
+            </div>
+            <ul class="space-y-3 mb-4">
+                <li class="flex items-center"><i class="fas fa-egg text-amber-400 mr-3 text-lg"></i> 2 Huevos</li>
+                <li class="flex items-center"><i class="fas fa-seedling text-rose-300 mr-3 text-lg"></i> 40g Avena</li>
+                <li class="flex items-center"><i class="fas fa-ice-cream text-pink-300 mr-3 text-lg"></i> 150g Yogur</li>
+                <li class="flex items-center"><i class="fas fa-apple-alt text-red-400 mr-3 text-lg"></i> 1 Fruta</li>
+            </ul>
+            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~400 kcal</div>
+        </section>
+
+        <!-- MEDIA MAÑANA -->
+        <section class="meal-card p-5">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200">
+                    08:00
+                </span>
+                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Media Mañana</span>
+            </div>
+            <ul class="space-y-3 mb-4">
+                <li class="flex items-center"><i class="fas fa-drumstick-bite text-rose-400 mr-3 text-lg"></i> 120g Pollo (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-bowl-rice text-rose-200 mr-3 text-lg"></i> 50g Arroz (Crudo)</li>
+            </ul>
+            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~350 kcal</div>
+        </section>
+
+        <!-- ALMUERZO -->
+        <section class="meal-card p-5 border-t-4 border-rose-400">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200">
+                    12:30
+                </span>
+                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Almuerzo</span>
+            </div>
+            <ul class="space-y-3 mb-4">
+                <li class="flex items-center"><i class="fas fa-drumstick-bite text-rose-400 mr-3 text-lg"></i> 150g Pollo (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-bowl-rice text-rose-200 mr-3 text-lg"></i> 70g Arroz (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-leaf text-emerald-400 mr-3 text-lg"></i> Verduras</li>
+            </ul>
+            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~450 kcal</div>
+        </section>
+
+        <!-- PRE-ENTRENO -->
+        <section class="meal-card p-5 bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 border-2 border-rose-200">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-rose-600 text-white px-4 py-1.5 rounded-full font-bold text-sm">
+                    16:00
+                </span>
+                <span class="text-[10px] uppercase font-black text-rose-600">Power Up!</span>
+            </div>
+            <ul class="space-y-3 mb-4">
+                <li class="flex items-center"><i class="fas fa-coffee text-rose-800 mr-3 text-lg"></i> Café</li>
+                <li class="flex items-center"><i class="fas fa-lemon text-yellow-400 mr-3 text-lg"></i> 1 Fruta</li>
+                <li class="flex items-center font-bold text-rose-600 italic">
+                    <i class="fas fa-sparkles mr-3 text-lg"></i> 5g Creatina ✔️
+                </li>
+            </ul>
+            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~80 kcal</div>
+        </section>
+
+        <!-- POST-ENTRENO -->
+        <section class="meal-card p-5">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-fuchsia-500 text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-fuchsia-200">
+                    18:30
+                </span>
+                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Post-Entreno</span>
+            </div>
+            <ul class="space-y-3 mb-4">
+                <li class="flex items-center"><i class="fas fa-shaker text-fuchsia-400 mr-3 text-lg"></i> 1 Scoop Proteína</li>
+            </ul>
+            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~120 kcal</div>
+        </section>
+
+        <!-- CENA -->
+        <section class="meal-card p-5">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200">
+                    20:00
+                </span>
+                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Cena</span>
+            </div>
+            <ul class="space-y-3 mb-4">
+                <li class="flex items-center"><i class="fas fa-drumstick-bite text-rose-400 mr-3 text-lg"></i> 120g Pollo (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-bowl-rice text-rose-200 mr-3 text-lg"></i> 50g Arroz (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-carrot text-orange-400 mr-3 text-lg"></i> Verduras</li>
+            </ul>
+            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~350 kcal</div>
+        </section>
+
+        <!-- ANTES DE DORMIR -->
+        <section class="meal-card p-5 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-slate-800 text-white px-4 py-1.5 rounded-full font-bold text-sm">
+                    22:30
+                </span>
+                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Relax</span>
+            </div>
+            <ul class="space-y-3 mb-4">
+                <li class="flex items-center"><i class="fas fa-egg text-amber-400 mr-3 text-lg"></i> 2 Huevos o Yogur</li>
+            </ul>
+            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~150 kcal</div>
+        </section>
+
+        <!-- SUPLEMENTOS CARD -->
+        <div class="bg-rose-500 text-white p-6 rounded-[2.5rem] shadow-2xl shadow-rose-200 dark:shadow-none">
+            <h3 class="font-black text-xl mb-4 flex items-center tracking-tight">
+                <i class="fas fa-pills mr-3"></i> Suplementación
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-start gap-4 bg-white/10 p-4 rounded-2xl">
+                    <i class="fas fa-check-circle text-rose-200 mt-1"></i>
+                    <div>
+                        <p class="font-bold">Creatina 5g</p>
+                        <p class="text-xs text-rose-100">Tomar siempre pre-entreno (16:00).</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 bg-white/10 p-4 rounded-2xl">
+                    <i class="fas fa-check-circle text-rose-200 mt-1"></i>
+                    <div>
+                        <p class="font-bold">Proteína Scoop</p>
+                        <p class="text-xs text-rose-100">Clave para la recuperación muscular.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mt-12 p-8 text-center opacity-40">
+        <p class="text-[10px] font-black uppercase tracking-widest">Plan de Recomposición Corporal</p>
+    </footer>
+
+</body>
+</html>
