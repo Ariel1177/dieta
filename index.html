@@ -1,226 +1,410 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dieta Yamila - Definición & Glúteos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #fff1f2;
-            --card-bg: #ffffff;
-            --text-primary: #881337;
-            --accent-pink: #f43f5e;
-            --accent-soft: #fb7185;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan Diario - Hipertrofia Limpia</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #4c0519;
-                --card-bg: #831843;
-                --text-primary: #ffe4e6;
-                --accent-pink: #fb7185;
-                --accent-soft: #fda4af;
-            }
-        }
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 20px;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            transition: background-color 0.3s ease;
-        }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        .meal-card {
-            background-color: var(--card-bg);
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(244, 63, 94, 0.1);
-        }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-        .time-badge {
-            background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
-        }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
 
-        .kcal-tag {
-            background-color: rgba(244, 63, 94, 0.1);
-            color: var(--accent-pink);
-        }
+    header p {
+      color: #cbd5e1;
+      font-size: 1rem;
+    }
 
-        .header-gradient {
-            background: linear-gradient(to bottom, #fecdd3, transparent);
-        }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 35px;
+    }
 
-        @media (prefers-color-scheme: dark) {
-            .header-gradient {
-                background: linear-gradient(to bottom, #881337, transparent);
-            }
-        }
-    </style>
+    .summary-card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid #334155;
+      transition: 0.3s;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .summary-card h2 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+
+    .meal {
+      background: #1e293b;
+      border-radius: 18px;
+      margin-bottom: 25px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .meal-header {
+      background: #2563eb;
+      padding: 18px;
+    }
+
+    .meal-header h2 {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+    }
+
+    .meal-header p {
+      color: #dbeafe;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+
+    th {
+      background: #0f172a;
+      color: #38bdf8;
+    }
+
+    tr:hover {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .totals {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      background: #111827;
+    }
+
+    .total-box {
+      background: #0f172a;
+      padding: 15px;
+      border-radius: 12px;
+      min-width: 150px;
+      text-align: center;
+      border: 1px solid #334155;
+    }
+
+    .total-box strong {
+      display: block;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    .supplements {
+      background: #1e293b;
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid #334155;
+      margin-top: 30px;
+    }
+
+    .supplements h2 {
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    .supplements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .supplement-card {
+      background: #0f172a;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid #334155;
+    }
+
+    .supplement-card h3 {
+      margin-bottom: 8px;
+      color: #f8fafc;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .meal-header h2 {
+        font-size: 1.1rem;
+      }
+
+      .totals {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .total-box {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-<body class="pb-12">
+<body>
+  <div class="container">
 
-    <!-- Header & Info Objetivo -->
-    <header class="p-8 text-center header-gradient">
-        <div class="mb-2 flex justify-center">
-            <span class="bg-rose-500 text-white text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-widest">Objetivo: Recomposición</span>
-        </div>
-        <h1 class="text-4xl font-extrabold mb-1 tracking-tight">Dieta Yamila 📊</h1>
-        <p class="text-sm opacity-80 font-medium">70 kg | 1.65 m | Definición + Glúteos</p>
-        
-        <div class="grid grid-cols-2 gap-3 mt-6">
-            <div class="bg-white/50 dark:bg-rose-900/30 p-3 rounded-2xl backdrop-blur-sm">
-                <p class="text-[10px] uppercase font-bold opacity-60">Energía</p>
-                <p class="text-lg font-black">~2000 kcal</p>
-            </div>
-            <div class="bg-white/50 dark:bg-rose-900/30 p-3 rounded-2xl backdrop-blur-sm">
-                <p class="text-[10px] uppercase font-bold opacity-60">Prioridad</p>
-                <p class="text-lg font-black">Proteína 🍗</p>
-            </div>
-        </div>
+    <header>
+      <h1>Plan Diario - Hipertrofia Limpia</h1>
+      <p>3000 kcal • 180g proteína • 350g carbohidratos • Entrenamiento intenso</p>
     </header>
 
-    <main class="max-w-md mx-auto px-5 space-y-5">
+    <section class="summary">
+      <div class="summary-card">
+        <h2>3050+</h2>
+        <p>Calorías</p>
+      </div>
 
-        <!-- DESAYUNO -->
-        <section class="meal-card p-5">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200 dark:shadow-none">
-                    05:00
-                </span>
-                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Desayuno</span>
-            </div>
-            <ul class="space-y-3 mb-4">
-                <li class="flex items-center"><i class="fas fa-egg text-amber-400 mr-3 text-lg"></i> 2 Huevos</li>
-                <li class="flex items-center"><i class="fas fa-seedling text-rose-300 mr-3 text-lg"></i> 40g Avena</li>
-                <li class="flex items-center"><i class="fas fa-ice-cream text-pink-300 mr-3 text-lg"></i> 150g Yogur</li>
-                <li class="flex items-center"><i class="fas fa-apple-alt text-red-400 mr-3 text-lg"></i> 1 Fruta</li>
-            </ul>
-            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~400 kcal</div>
-        </section>
+      <div class="summary-card">
+        <h2>180g</h2>
+        <p>Proteínas</p>
+      </div>
 
-        <!-- MEDIA MAÑANA -->
-        <section class="meal-card p-5">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200">
-                    08:00
-                </span>
-                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Media Mañana</span>
-            </div>
-            <ul class="space-y-3 mb-4">
-                <li class="flex items-center"><i class="fas fa-drumstick-bite text-rose-400 mr-3 text-lg"></i> 120g Pollo (Crudo)</li>
-                <li class="flex items-center"><i class="fas fa-bowl-rice text-rose-200 mr-3 text-lg"></i> 50g Arroz (Crudo)</li>
-            </ul>
-            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~350 kcal</div>
-        </section>
+      <div class="summary-card">
+        <h2>350g</h2>
+        <p>Carbohidratos</p>
+      </div>
 
-        <!-- ALMUERZO -->
-        <section class="meal-card p-5 border-t-4 border-rose-400">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200">
-                    12:30
-                </span>
-                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Almuerzo</span>
-            </div>
-            <ul class="space-y-3 mb-4">
-                <li class="flex items-center"><i class="fas fa-drumstick-bite text-rose-400 mr-3 text-lg"></i> 150g Pollo (Crudo)</li>
-                <li class="flex items-center"><i class="fas fa-bowl-rice text-rose-200 mr-3 text-lg"></i> 70g Arroz (Crudo)</li>
-                <li class="flex items-center"><i class="fas fa-leaf text-emerald-400 mr-3 text-lg"></i> Verduras</li>
-            </ul>
-            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~450 kcal</div>
-        </section>
+      <div class="summary-card">
+        <h2>75g</h2>
+        <p>Grasas</p>
+      </div>
+    </section>
 
-        <!-- PRE-ENTRENO -->
-        <section class="meal-card p-5 bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 border-2 border-rose-200">
-            <div class="flex justify-between items-center mb-4">
-                <span class="bg-rose-600 text-white px-4 py-1.5 rounded-full font-bold text-sm">
-                    16:00
-                </span>
-                <span class="text-[10px] uppercase font-black text-rose-600">Power Up!</span>
-            </div>
-            <ul class="space-y-3 mb-4">
-                <li class="flex items-center"><i class="fas fa-coffee text-rose-800 mr-3 text-lg"></i> Café</li>
-                <li class="flex items-center"><i class="fas fa-lemon text-yellow-400 mr-3 text-lg"></i> 1 Fruta</li>
-                <li class="flex items-center font-bold text-rose-600 italic">
-                    <i class="fas fa-sparkles mr-3 text-lg"></i> 5g Creatina ✔️
-                </li>
-            </ul>
-            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~80 kcal</div>
-        </section>
+    <div id="meals"></div>
 
-        <!-- POST-ENTRENO -->
-        <section class="meal-card p-5">
-            <div class="flex justify-between items-center mb-4">
-                <span class="bg-fuchsia-500 text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-fuchsia-200">
-                    18:30
-                </span>
-                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Post-Entreno</span>
-            </div>
-            <ul class="space-y-3 mb-4">
-                <li class="flex items-center"><i class="fas fa-shaker text-fuchsia-400 mr-3 text-lg"></i> 1 Scoop Proteína</li>
-            </ul>
-            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~120 kcal</div>
-        </section>
+    <section class="supplements">
+      <h2>Suplementación Diaria</h2>
 
-        <!-- CENA -->
-        <section class="meal-card p-5">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md shadow-rose-200">
-                    20:00
-                </span>
-                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Cena</span>
-            </div>
-            <ul class="space-y-3 mb-4">
-                <li class="flex items-center"><i class="fas fa-drumstick-bite text-rose-400 mr-3 text-lg"></i> 120g Pollo (Crudo)</li>
-                <li class="flex items-center"><i class="fas fa-bowl-rice text-rose-200 mr-3 text-lg"></i> 50g Arroz (Crudo)</li>
-                <li class="flex items-center"><i class="fas fa-carrot text-orange-400 mr-3 text-lg"></i> Verduras</li>
-            </ul>
-            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~350 kcal</div>
-        </section>
-
-        <!-- ANTES DE DORMIR -->
-        <section class="meal-card p-5 mb-8">
-            <div class="flex justify-between items-center mb-4">
-                <span class="bg-slate-800 text-white px-4 py-1.5 rounded-full font-bold text-sm">
-                    22:30
-                </span>
-                <span class="text-[10px] uppercase font-black tracking-tighter opacity-50">Relax</span>
-            </div>
-            <ul class="space-y-3 mb-4">
-                <li class="flex items-center"><i class="fas fa-egg text-amber-400 mr-3 text-lg"></i> 2 Huevos o Yogur</li>
-            </ul>
-            <div class="kcal-tag inline-block px-4 py-1 rounded-full text-xs font-black">~150 kcal</div>
-        </section>
-
-        <!-- SUPLEMENTOS CARD -->
-        <div class="bg-rose-500 text-white p-6 rounded-[2.5rem] shadow-2xl shadow-rose-200 dark:shadow-none">
-            <h3 class="font-black text-xl mb-4 flex items-center tracking-tight">
-                <i class="fas fa-pills mr-3"></i> Suplementación
-            </h3>
-            <div class="space-y-4">
-                <div class="flex items-start gap-4 bg-white/10 p-4 rounded-2xl">
-                    <i class="fas fa-check-circle text-rose-200 mt-1"></i>
-                    <div>
-                        <p class="font-bold">Creatina 5g</p>
-                        <p class="text-xs text-rose-100">Tomar siempre pre-entreno (16:00).</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 bg-white/10 p-4 rounded-2xl">
-                    <i class="fas fa-check-circle text-rose-200 mt-1"></i>
-                    <div>
-                        <p class="font-bold">Proteína Scoop</p>
-                        <p class="text-xs text-rose-100">Clave para la recuperación muscular.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="supplements-grid">
+        <div class="supplement-card">
+          <h3>Creatina Monohidratada</h3>
+          <p>5 gramos diarios</p>
         </div>
 
-    </main>
+        <div class="supplement-card">
+          <h3>Proteína Whey</h3>
+          <p>2 a 3 scoops diarios</p>
+        </div>
 
-    <footer class="mt-12 p-8 text-center opacity-40">
-        <p class="text-[10px] font-black uppercase tracking-widest">Plan de Recomposición Corporal</p>
-    </footer>
+        <div class="supplement-card">
+          <h3>Maltodextrina</h3>
+          <p>50 gramos diarios</p>
+        </div>
 
+        <div class="supplement-card">
+          <h3>Omega 3</h3>
+          <p>1 a 2 gramos diarios</p>
+        </div>
+
+        <div class="supplement-card">
+          <h3>Magnesio</h3>
+          <p>Consumir por la noche</p>
+        </div>
+
+        <div class="supplement-card">
+          <h3>Vitamina D3</h3>
+          <p>1 dosis diaria</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <p>Plan de alimentación enfocado en hipertrofia limpia y rendimiento deportivo.</p>
+    </div>
+
+  </div>
+
+  <script>
+    const meals = [
+      {
+        title: '5:00 AM — Activación',
+        description: 'Comida ligera para activar energía y proteína.',
+        totals: ['395 kcal', '30g proteína', '60g carbos'],
+        foods: [
+          ['Banana', '1 grande', '120', '1', '30'],
+          ['Avena', '40 g', '150', '5', '27'],
+          ['Proteína Whey', '30 g', '120', '24', '3'],
+          ['Café', 'Libre', '5', '-', '-']
+        ]
+      },
+      {
+        title: '9:00 AM — Desayuno Fuerte',
+        description: 'Alta carga de proteínas y carbohidratos.',
+        totals: ['880 kcal', '61g proteína', '95g carbos'],
+        foods: [
+          ['Huevos', '4 unidades', '320', '28', '2'],
+          ['Pan integral', '120 g', '320', '12', '60'],
+          ['Yogurt griego', '200 g', '140', '20', '8'],
+          ['Fruta', '1 unidad', '100', '1', '25']
+        ]
+      },
+      {
+        title: '14:00 PM — Almuerzo',
+        description: 'Comida principal con alta energía.',
+        totals: ['960 kcal', '65g proteína', '95g carbos'],
+        foods: [
+          ['Pollo', '250 g', '420', '55', '0'],
+          ['Arroz cocido', '300 g', '390', '8', '85'],
+          ['Verduras', 'Libre', '60', '2', '10'],
+          ['Aceite de oliva', '10 g', '90', '0', '0']
+        ]
+      },
+      {
+        title: '16:30 PM — Batido Hipercalórico',
+        description: 'Batido potente para cubrir calorías y carbohidratos.',
+        totals: ['1090 kcal', '54g proteína', '158g carbos'],
+        foods: [
+          ['Leche', '400 ml', '240', '14', '20'],
+          ['Avena', '80 g', '300', '10', '54'],
+          ['Banana', '1 unidad', '120', '1', '30'],
+          ['Proteína Whey', '30 g', '120', '24', '3'],
+          ['Mantequilla de maní', '20 g', '120', '5', '4'],
+          ['Maltodextrina', '50 g', '190', '0', '47']
+        ]
+      },
+      {
+        title: '18:00 PM — Pre Entreno',
+        description: 'Energía rápida antes de entrenar.',
+        totals: ['125 kcal', '1g proteína', '30g carbos'],
+        foods: [
+          ['Banana', '1 unidad', '120', '1', '30'],
+          ['Café', 'Libre', '5', '-', '-']
+        ]
+      },
+      {
+        title: 'Post Entrenamiento',
+        description: 'Recuperación inmediata.',
+        totals: ['Suplementación', 'Recuperación muscular', 'Hidratación'],
+        foods: [
+          ['Creatina Monohidratada', '5 g', '-', '-', '-'],
+          ['Proteína Whey', '30 g', '-', '-', '-'],
+          ['Agua', 'Abundante', '-', '-', '-']
+        ]
+      },
+      {
+        title: '21:00 PM — Cena Post Entreno',
+        description: 'Recuperación muscular y carga final.',
+        totals: ['900 kcal', '75g proteína', '71g carbos'],
+        foods: [
+          ['Carne magra o pollo', '250 g', '420', '55', '0'],
+          ['Arroz o papas', '250 g', '320', '6', '70'],
+          ['Huevos', '2 unidades', '160', '14', '1']
+        ]
+      }
+    ];
+
+    const mealsContainer = document.getElementById('meals');
+
+    meals.forEach(meal => {
+      const section = document.createElement('section');
+      section.classList.add('meal');
+
+      section.innerHTML = `
+        <div class="meal-header">
+          <h2>${meal.title}</h2>
+          <p>${meal.description}</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Alimento</th>
+                <th>Cantidad</th>
+                <th>kcal</th>
+                <th>Proteína</th>
+                <th>Carbohidratos</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              ${meal.foods.map(food => `
+                <tr>
+                  <td>${food[0]}</td>
+                  <td>${food[1]}</td>
+                  <td>${food[2]}</td>
+                  <td>${food[3]}</td>
+                  <td>${food[4]}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="totals">
+          <div class="total-box">
+            <strong>Total</strong>
+            ${meal.totals[0]}
+          </div>
+
+          <div class="total-box">
+            <strong>Proteínas</strong>
+            ${meal.totals[1]}
+          </div>
+
+          <div class="total-box">
+            <strong>Carbohidratos</strong>
+            ${meal.totals[2]}
+          </div>
+        </div>
+      `;
+
+      mealsContainer.appendChild(section);
+    });
+  </script>
 </body>
 </html>
